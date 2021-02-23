@@ -13,9 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,7 +27,7 @@ import at.htlgkr.steam.SteamBackend;
 
 public class MainActivity extends AppCompatActivity {
     private static final String GAMES_CSV = "games.csv";
-    private SteamBackend backend = new SteamBackend();
+    private final SteamBackend backend = new SteamBackend();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
             alert.setTitle(SteamGameAppConstants.ENTER_SEARCH_TERM)
                 .setView(searchTerm)
                 .setPositiveButton("Confirm", (dialogInterface, i) -> {
-                    //CUSTOM FILTER
                     List<Game> filteredGames = backend.getGames().stream()
                             .filter(game -> game.getName().toLowerCase().trim().contains(
                                             searchTerm.getText().toString().toLowerCase().trim())

@@ -8,18 +8,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import at.htlgkr.steam.Game;
 
 public class GameAdapter extends BaseAdapter {
-    private LayoutInflater inflater;
-    private int listViewItemLayoutId;
-    private List<Game> games;
+    private final LayoutInflater inflater;
+    private final int listViewItemLayoutId;
+    private final List<Game> games;
 
     private TextView name;
     private TextView releaseDate;
@@ -33,12 +30,12 @@ public class GameAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return games.size();
+        return this.games.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return games.get(position);
+        return this.games.get(position);
     }
 
     @Override
@@ -51,15 +48,15 @@ public class GameAdapter extends BaseAdapter {
     public View getView(int position, View givenView, ViewGroup parent) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Game.DATE_FORMAT);
         View view = (givenView == null) ? inflater.inflate(this.listViewItemLayoutId, null) : givenView;
-        Game game = (Game) getItem(position);
+        Game currentGame = (Game) getItem(position);
 
         name = view.findViewById(R.id.name);
         releaseDate = view.findViewById(R.id.name);
         price = view.findViewById(R.id.price);
 
-        name.setText(game.getName());
-        releaseDate.setText(simpleDateFormat.format(game.getReleaseDate()));
-        price.setText(game.getPrice()+"");
+        name.setText(currentGame.getName());
+        releaseDate.setText(simpleDateFormat.format(currentGame.getReleaseDate()));
+        price.setText(currentGame.getPrice()+"");
 
         return view;
     }

@@ -1,13 +1,8 @@
 package at.htlgkr.steam;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import java.util.Objects;
 
